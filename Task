@@ -1,1 +1,735 @@
 //task 1
+Question 1:What are the key responsibilities of a QA Engineer in the software development lifecycle? Answer 1:,Requirements analysis and planning, test design and scope clearification, Execution and test environments and testing types, Bug report method and its cycles,improvement and documentations.
+
+Question 2:Honestly, I'd say preventing bugs matters more in the long run. Don't get me wrong, finding bugs is super important—that's literally what we do. But if you can catch issues early through better planning and code reviews, you save everyone a ton of headaches. In reality, you've gotta do both. I try to work closely with the dev team to spot problems before they even write the code, then I test everything thoroughly anyway.
+Question 3:So that's happened to me. The first thing I do is take a deep breath and document exactly what's happening—what steps broke the system, what I expected to see. Then I immediately grab the dev lead and product manager because this isn't a call I make alone. We look at whether the bug actually blocks the release or if there's a workaround. Sometimes you can patch it quick, sometimes you push the release. I always make sure whoever's deciding knows exactly what the risk is if we go live with it.
+
+Question 4: Unclear requirement during testing:I've been bitten by this before, so now I don't mess around with it. If something doesn't make sense in the requirement, I stop and ask. I'll go straight to the product owner or whoever wrote it and say "Hey, I'm not clear on how this should work." Way better to spend 10 minutes getting clarity than test the wrong thing and waste hours. It happens more than you'd think, honestly.
+
+Question 5: Feature drops last minute: This is stressful but manageable if you stay focused. I look at what the feature actually does, figure out what could really hurt us if it breaks, and test that first. I'll do a quick smoke test to make sure it basically works, then dig into the important parts. Then I'm really honest with my manager about what I couldn't test and what gaps we have. Sometimes you just have to accept that post-launch you might catch more stuff.
+
+Question 6: Exploratory testing: That's basically when you're not following a strict script—you're playing around with the app, trying different things, seeing what breaks. I do it a lot when something's new or when the requirements are kinda vague. It's great for finding weird edge cases that nobody thought of. It's different from regular testing where you follow specific steps. Both are necessary, but exploratory testing catches the unexpected stuff.
+
+Question 7: Regression testing: So regression testing is when you're making sure that when devs change one thing, they didn't accidentally break ten other things. I decide what to test based on what actually changed and what depends on it. If someone modifies the login system, I'm testing login, password reset, account creation—basically everything connected to auth. I focus on the risky stuff and anything customers use all the time. Automation helps a ton here because you can run tons of tests quickly.
+
+Question 8: Test case: A test case is basically your instructions for testing something. A good one needs to be really clear so anyone can follow it. I always include what you need before you start, the exact steps to follow, and what should happen when you do those steps. Then I note if it passed or failed. If it's confusing or ambiguous, it's not a good test case.
+
+Question 9: Test documentation tools: I've used TestRail and Jira a lot. With TestRail, you organize all your test cases, link them to requirements, and run through them and mark what passes and fails. It's super helpful for reporting because you get automatic stats. Jira's good for tracking everything together—bugs, tasks, test cases, all in one spot. Honestly, the tool matters less than actually keeping things organized and up to date.
+
+Question 10: Test report: My report needs to tell the story of how testing went. I always include how many tests I ran and how many passed versus failed. I break out the bugs by how serious they are. I talk about what I tested and what I didn't get to. I always call out the risky stuff—things that could bite us. And I give a clear recommendation: are we good to release or do we need to hold off?
+
+Question 11: Developer disagrees with my bug report: This happens and it's usually not a big deal. I'll sit down with the dev and go through exactly what happened. Sometimes they're right and I misunderstood something. Sometimes I'm right. If we genuinely disagree, I don't fight about it—I'll bring in a product manager or tech lead to look at the requirement together and settle it. It's never personal. You figure it out as a team.
+
+Question 12: Communicating risk of open defects: I try to be really clear about what could actually go wrong. If it's a security issue or something that crashes the app for lots of users, that's easy to explain. But I make it concrete—I'll say "This bug means 30% of users who try to checkout will get an error" instead of just saying "critical defect." I show them the list of bugs, what they affect, and I'll straight up say "I wouldn't release this" if that's what I think. Managers care about business impact, so I frame it that way.
+
+Question 13: Severity and priority: These are different and people mix them up. Severity is how bad the actual bug is—does it crash the whole app or is it just a typo? Priority is how fast it needs to be fixed—based on how many people it affects and how much it matters to the business. You might have a typo that's low severity but high priority if it's on the login screen that millions see daily.
+
+Question 14: Testing progress report: I break it down pretty simply. How much testing am I done with? How many tests passed, failed, or are blocked? What bugs did I find and how serious are they? What am I still worried about? Then I say what I think we should do—launch, delay, whatever. I make sure people understand what we tested and what we didn't. I keep it real about whether I'm confident in the product or not.
+
+Question 15: Difference between REST APIs and SOAP APIs
+
+Answer 15: REST is way simpler and more lightweight. We are basically using standard HTTP methods to talk to an API—GET, POST, that kind of thing. SOAP is more formal and structured, like it's got all these rules and it uses XML. REST is faster and easier to work with, honestly. Most modern APIs are REST now. SOAP's older and more enterprise-y. For testing purposes, REST is definitely easier to work with because you can just use a browser or a simple tool. SOAP requires more setup and is kind of a pain.
+
+Question 16: HTTP methods in REST APIs
+
+Answer 16:These are the verbs that tell the API what we want to do. GET is read-only—you're asking for data. POST is when we are creating something new. PUT is when you're updating something that already exists. DELETE is when we want to remove something. It matters because the API expects you to use the right method for the right action. If we POST when we should GET, things break. When I'm testing, I make sure devs are using these correctly and that the API responds properly to each one.
+
+Question 17: API testing tools
+
+Answer 17: I use Postman all the time. It's super straightforward—you set up the requests, plug in data, hit send, and see what comes back. It can organize collections of tests, automate them, check responses. I've also looked at Swagger for documentation and understanding what an API should do. JMeter I've used when we need to do load testing to see how an API handles tons of requests at once. Postman's my go-to though because it's intuitive and you don't need to be a programmer to use it effectively.
+
+Question 18: Experience with manual testing
+
+Answer 18:Yeah, I do a lot of manual testing. That's honestly where I spend most of my time. I'll open the app, click around, try different things, see if it works the way it should. You catch a lot of stuff this way that automation misses—weird UI issues, things that feel clunky, flows that don't make sense. I automate where it makes sense, like repetitive stuff, but there's no substitute for actually using the thing like a real user would. Manual testing is where I find the interesting bugs.
+
+Question 19: Testing SDK integration
+
+Answer 19: When we integrate an SDK into an app, I need to make sure it actually works in the real application. So I'll install it, run through the flows that use that SDK, and check if everything behaves right. I test both happy paths and error cases—what happens when the SDK fails or the network is down? I also watch for any side effects, like does it drain battery or break other features? I'll coordinate with the dev to make sure they integrated it correctly and that I'm testing it the right way.
+
+Question 20: Getting a 401 Unauthorized response
+
+Answer 20: Okay, so 401 means the system doesn't recognize who I am. First thing I check is my credentials—am I passing the right auth token or API key? Maybe it expired or I'm using the wrong one. I'll verify with the dev team that I have the right token for the environment I'm testing in. Sometimes it's a permissions thing—I have valid credentials but I'm not allowed to access that endpoint. I'll also check if the header format is right, because that matters for auth. Usually it's just a bad token or expired credentials though.
+
+Question 21: HTTP status codes in API responses
+
+Answer 21: Status codes tell you what happened with your request. 200 means success—everything's good. 400 means you messed up your request somehow, like you sent bad data. 401 is unauthorized—you need to log in or provide valid credentials. 403 is forbidden—you're authenticated but don't have permission. 404 means the thing you're looking for doesn't exist. 500 means the server messed up. There are a bunch more, but those are the main ones I see all the time. When I'm testing, I make sure the API returns the right code for different situations because that's how applications know what went wrong.
+
+Question 22: Experience in mobile/web app testing
+
+Answer 22: I've done both, honestly. With web apps, I test on different browsers—Chrome, Firefox, Safari, Edge—because things render differently and we never know what users are using. I check responsiveness, make sure it works on different screen sizes, test the flows. Mobile's a bit different because we are dealing with touch interactions, device-specific stuff, network variations. I've tested on both Android and iOS, and the experience is pretty different. Mobile's trickier because we've got to think about things like what happens when you get a call or a notification while using the app, or if the network drops. I use actual devices when I can because simulators don't catch everything. Web testing is usually faster to iterate on, but mobile testing is where you find the really annoying bugs that impact users the most.
+
+Question 23: Programming languages I've worked with
+
+Answer 23: I'm not a programmer, but I've picked up some basics over time just from working with devs. I can read and understand JavaScript, which helps when I'm testing web apps and need to understand how things work. I've messed around with Python a bit, mostly for writing simple automation scripts. I know SQL well enough to query test databases and verify data, which is super helpful. I'm not fluent in any language, but understanding the basics really helps me communicate with developers and write better test automation. It makes me better at my job because I can understand what devs are talking about and why bugs happen the way they do.
+
+Test Case 1
+Test Case ID: TC_LOGIN_007
+Title: User can log in successfully with correct username and password
+Pre-conditions: The user has an active account with username "Maxwell" and password "Password321"
+Test Steps:
+Go to the login page
+Type "Maxwell" in the username box
+Type "Password321" in the password box
+Click the Login button
+Wait for the page to load
+Expected Result: You get logged in and see the home page or dashboard
+Actual Result: (To be filled in when you actually test)
+Priority: High
+Remarks: This is the main thing we need to work—if this doesn't work, nothing else matters
+Test Case 2
+Test Case ID: TC_LOGIN_008
+Title: System shows error when password is wrong
+Pre-conditions: Username "john_doe" exists with correct password "Password123"
+Test Steps:
+Go to the login page
+Type "Maxwell" in the username box
+Type "WrongPassword" in the password box
+Click Login
+Look at what happens
+Expected Result: You see an error message saying something like "Invalid username or password" and you stay on the login page
+Actual Result: (To be filled in when you actually test)
+Priority: High
+Remarks: Makes sure the system doesn't let people in with bad passwords
+Test Case 3
+Test Case ID: TC_LOGIN_005
+Title: Can't log in if username doesn't exist
+Pre-conditions: The username "fake_user_xrz" is not in the system
+Test Steps:
+Go to the login page
+Type "fake_user_xrz" in the username box
+Type any password you want
+Click Login
+Expected Result: You see an error and stay on the login page. The error should say something about invalid credentials
+Actual Result: (To be filled in when you actually test)
+Priority: High
+Remarks: Good for security—we don't want to tell people if a username exists or not
+Test Case 4
+Test Case ID: TC_LOGIN_002
+Title: Error shows up if you don't fill in the username
+Pre-conditions: You're on the login page
+Test Steps:
+Go to the login page
+Leave the username box empty
+Type a password in the password box
+Click Login
+Expected Result: You see an error message like "Username is required" and nothing happens
+Actual Result: (To be filled in when you actually test)
+Priority: High
+Remarks: Makes sure the form checks that you actually entered something
+Test Case 5
+Test Case ID: TC_LOGIN_009
+Title: Error shows up if you don't fill in the password
+Pre-conditions: You're on the login page
+Test Steps:
+Go to the login page
+Type "john_doe" in the username box
+Leave the password box empty
+Click Login
+Expected Result: You see an error message like "Password is required" and you stay on the login page
+Actual Result: (To be filled in when you actually test)
+Priority: High
+Remarks: Another basic validation check
+Test Case 6
+Test Case ID: TC_LOGIN_003
+Title: Remember Me checkbox keeps you logged in
+Pre-conditions: You have a valid account "john_doe" with password "Password123". Your browser saves cookies.
+Test Steps:
+Go to the login page
+Type "Maxwell" in username
+Type "Password321" in password
+Check the "Remember Me" box
+Click Login
+You should be logged in now
+Close your browser completely
+Open the browser again and go back to the app
+Expected Result: You're already logged in without having to type your credentials again
+Actual Result: (To be filled in when you actually test)
+Priority: Medium
+Remarks: Tests whether the remember me thing actually works
+Test Case 7
+Test Case ID: TC_LOGIN_012
+Title: Clicking "Forgot Password" takes you to the right page
+Pre-conditions: You're on the login page
+Test Steps:
+Go to the login page
+Look for the "Forgot Password" link
+Click on it
+Expected Result: You get taken to a page where you can reset your password
+Actual Result: (To be filled in when you actually test)
+Priority: Medium
+Remarks: Just makes sure the link works and goes somewhere useful
+Test Case 8
+Test Case ID: TC_LOGIN_008
+Title: Log in works if username has special characters like a period or @
+Pre-conditions: There's a user account with username "Maxwell@example.com"
+Test Steps:
+Go to the login page
+Type "Maxwell@example.com" in the username field
+Type the correct password
+Click Login
+Expected Result: Login works fine and you get logged in
+Actual Result: (To be filled in when you actually test)
+Priority: Medium
+Remarks: Some people use email as username so we need to make sure that works
+Test Case 9
+Test Case ID: TC_LOGIN_006
+Title: What happens if there are extra spaces before or after your username
+Pre-conditions: Username "john_doe" exists in the system
+Test Steps:
+Go to the login page
+Type " john_doe " in the username (add spaces at the start and end)
+Type the correct password
+Click Login
+Expected Result: Either it logs you in (if the system removes spaces) OR it shows an error
+Actual Result: (To be filled in when you actually test)
+Priority: Low
+Remarks: Edge case thing—most people won't do this but good to check
+Test Case 10
+Test Case ID: TC_LOGIN_001
+Title: Password doesn't show as plain text when you type it
+Pre-conditions: You're on the login page
+Test Steps:
+Go to the login page
+Click in the password field
+Type "Password321"
+Watch what you see on the screen
+Expected Result: You should see dots or asterisks (\*\*\*) instead of the actual letters you're typing
+Actual Result: (To be filled in when you actually test)
+Priority: High
+Remarks: Super important for security—if someone looks over your shoulder they shouldn't see your password
+Test Case 11
+Test Case ID: TC_LOGIN_010
+Title: System locks you out after too many wrong login attempts
+Pre-conditions: You're on the login page. Username "john_doe" exists.
+Test Steps:
+Go to the login page
+Try logging in with "john_doe" and a wrong password
+Click Login and see the error
+Do this 5 more times (total 6 failed attempts)
+Try one more time with the correct password
+Expected Result: After multiple failed attempts, the system should lock the account or show a message saying "Too many failed attempts, try again later" or similar
+Actual Result: (To be filled in when you actually test)
+Priority: High
+Remarks: Protects accounts from people trying to guess passwords
+Test Case 12
+Test Case ID: TC_LOGIN_004
+Title: Can still log in if you use different capital letters in your username
+Pre-conditions: Username "Maxwell" exists in the system
+Test Steps:
+Go to the login page
+Type "MAXWELL" (all caps) in the username field
+Type the correct password
+Click Login
+Expected Result: Login works because usernames are usually case-insensitive
+Actual Result: (To be filled in when you actually test)
+Priority: Low
+
+Remarks: Just checking if the system is flexible with uppercase vs lowercase
+
+Test Suite Description:
+
+We're going to test three main things:
+Get all posts (GET request without parameters)
+Get a specific post by ID (GET request with parameters)
+Create a new post (POST request)
+For each test, we'll check that the response is correct and has all the data we expect.
+
+// Test 1: GET All Posts
+
+console.log('=== TEST 1: GET All Posts ===\n');
+fetch('https://jsonplaceholder.typicode.com/posts')
+.then(r => {
+if (r.status !== 200) throw new Error('Status not 200');
+console.log('✓ Status: 200');
+return r.json();
+})
+.then(data => {
+if (!Array.isArray(data)) throw new Error('Not an array');
+console.log('✓ Response is array with ' + data.length + ' posts');
+
+    const fields = ['userId', 'id', 'title', 'body'];
+    fields.forEach(f => {
+      if (!data[0][f]) throw new Error('Missing ' + f);
+      console.log('✓ Field ' + f + ' exists');
+    });
+    console.log('\n✓ TEST 1 PASSED\n');
+
+})
+.catch(e => console.log('\n✗ TEST 1 FAILED: ' + e.message + '\n'));
+
+// Test 2: GET Specific Post
+
+console.log('=== TEST 2: GET Specific Post ===\n');
+fetch('https://jsonplaceholder.typicode.com/posts/5')
+.then(r => {
+if (r.status !== 200) throw new Error('Status not 200');
+console.log('✓ Status: 200');
+return r.json();
+})
+.then(data => {
+if (data.id !== 5) throw new Error('ID not 5');
+console.log('✓ Post ID = 5');
+
+    if (!data.title || !data.body) throw new Error('Missing title or body');
+    console.log('✓ Title: ' + data.title);
+    console.log('✓ Body: ' + data.body.substring(0, 40) + '...');
+    console.log('\n✓ TEST 2 PASSED\n');
+
+})
+.catch(e => console.log('\n✗ TEST 2 FAILED: ' + e.message + '\n'));
+// Test 3: POST Create Post
+console.log('=== TEST 3: POST Create Post ===\n');
+const newPost = {
+title: 'Test Title',
+body: 'Test body',
+userId: 1
+};
+fetch('https://jsonplaceholder.typicode.com/posts', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify(newPost)
+})
+.then(r => {
+if (r.status !== 201 && r.status !== 200) throw new Error('Status not 201/200');
+console.log('✓ Status: ' + r.status);
+return r.json();
+})
+.then(data => {
+if (!data.id) throw new Error('No ID assigned');
+console.log('✓ ID: ' + data.id);
+
+    if (data.title !== newPost.title) throw new Error('Title mismatch');
+    if (data.body !== newPost.body) throw new Error('Body mismatch');
+    if (data.userId !== newPost.userId) throw new Error('UserId mismatch');
+
+    console.log('✓ Title: ' + data.title);
+    console.log('✓ Body: ' + data.body);
+    console.log('✓ UserId: ' + data.userId);
+    console.log('\n✓ TEST 3 PASSED\n');
+
+})
+.catch(e => console.log('\n✗ TEST 3 FAILED: ' + e.message + '\n'));
+Summary of What Each Test Does:
+Test 1 (GET all posts):
+Sends request to get all posts
+Checks status is 200
+Verifies response is a list
+Confirms each post has userId, id, title, body fields
+Test 2 (GET specific post):
+Sends request to get post with ID 5
+Checks status is 200
+Verifies response is a single object (not a list)
+Confirms the ID matches what we requested
+Validates field types (numbers and strings)
+Test 3 (POST new post):
+Creates a new post with title, body, and userId
+Checks status is 201 (or 200)
+Verifies the API assigned an ID to the new post
+Confirms the data we sent matches what came back
+Validates all required fields are present
+Run:
+answer 2
+javascript// Short GET Request with Query Parameters Test
+console.log('=== GET Request with Query Parameters Test ===\n');
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+.then(res => {
+console.log('Status: ' + res.status);
+if (res.status !== 200) throw new Error('Status is not 200');
+console.log('✓ Status code is 200\n');
+return res.json();
+})
+.then(post => {
+console.log('Checking post with ID = 1...\n');
+
+    // Check ID
+    if (post.id !== 1) throw new Error('ID is not 1');
+    console.log('✓ Post ID = 1');
+
+    // Check title not null
+    if (!post.title || post.title.trim() === '') throw new Error('Title is null or empty');
+    console.log('✓ Title: ' + post.title);
+
+    // Check body not null
+    if (!post.body || post.body.trim() === '') throw new Error('Body is null or empty');
+    console.log('✓ Body: ' + post.body.substring(0, 50) + '...');
+
+    console.log('\n✓ ALL TESTS PASSED');
+
+})
+.catch(err => {
+console.log('\n✗ TEST FAILED: ' + err.message);
+});
+// POST Request Test
+console.log('=== POST Request Test ===\n');
+const newPost = {
+title: "Test Title",
+body: "This is a test post.",
+userId: 123
+};
+fetch('https://jsonplaceholder.typicode.com/posts', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify(newPost)
+})
+.then(res => {
+console.log('Status: ' + res.status);
+if (res.status !== 201) throw new Error('Status is not 201');
+console.log('✓ Status code is 201\n');
+return res.json();
+})
+.then(post => {
+console.log('Checking created post...\n');
+
+    // Check ID was assigned
+    if (!post.id) throw new Error('No ID assigned');
+    console.log('✓ ID assigned: ' + post.id);
+
+    // Check title matches
+    if (post.title !== newPost.title) throw new Error('Title mismatch');
+    console.log('✓ Title: ' + post.title);
+
+    // Check body matches
+    if (post.body !== newPost.body) throw new Error('Body mismatch');
+    console.log('✓ Body: ' + post.body);
+
+    // Check userId matches
+    if (post.userId !== newPost.userId) throw new Error('UserId mismatch');
+    console.log('✓ UserId: ' + post.userId);
+
+    console.log('\n✓ ALL TESTS PASSED');
+
+})
+.catch(err => {
+console.log('\n✗ TEST FAILED: ' + err.message);
+});
+Negative testing
+//Negative Testing - Invalid Endpoint
+console.log('=== Negative Testing - Invalid Endpoint ===\n');
+fetch('https://jsonplaceholder.typicode.com/posts/9999')
+.then(res => {
+console.log('Status: ' + res.status);
+if (res.status !== 404) throw new Error('Status is not 404');
+console.log('✓ Status code is 404\n');
+return res.text();
+})
+.then(body => {
+console.log('Response body:');
+if (body.trim() === '') {
+console.log('✓ Response is empty (expected)');
+} else {
+console.log('Response content: ' + body);
+console.log('✓ Response contains error message or data');
+}
+console.log('\n✓ ALL TESTS PASSED');
+})
+.catch(err => {
+console.log('\n✗ TEST FAILED: ' + err.message);
+});
+
+Test Suite Description:
+
+We're going to test three main things:
+Get all posts (GET request without parameters)
+Get a specific post by ID (GET request with parameters)
+Create a new post (POST request)
+
+For each test, we'll check that the response is correct and has all the data we expect.
+
+Solution 1: GET Request - Retrieve All Posts
+javascript// Test 1: Get all posts from the API
+console.log('=== TEST 1: GET All Posts ===\n');
+fetch('https://jsonplaceholder.typicode.com/posts')
+.then(response => {
+// Check status code
+console.log('Status Code: ' + response.status);
+
+    if (response.status === 200) {
+      console.log('✓ Status code is 200 - PASS');
+    } else {
+      console.log('✗ Status code is not 200 - FAIL');
+      throw new Error('Bad status code');
+    }
+
+    return response.json();
+
+})
+.then(data => {
+// Check if response is an array
+console.log('\nResponse Type Check:');
+if (Array.isArray(data)) {
+console.log('✓ Response is an array - PASS');
+} else {
+console.log('✗ Response is not an array - FAIL');
+throw new Error('Not an array');
+}
+
+    // Check if we have data
+    console.log('\nData Count: ' + data.length + ' posts found');
+
+    if (data.length > 0) {
+      console.log('✓ Response contains posts - PASS');
+    } else {
+      console.log('✗ No posts in response - FAIL');
+      throw new Error('No data');
+    }
+
+    // Check first post has required fields
+    console.log('\nRequired Fields Check (First Post):');
+    const firstPost = data[0];
+    const requiredFields = ['userId', 'id', 'title', 'body'];
+
+    let allFieldsPresent = true;
+    requiredFields.forEach(field => {
+      if (firstPost.hasOwnProperty(field)) {
+        console.log('✓ Field "' + field + '" exists - PASS');
+      } else {
+        console.log('✗ Field "' + field + '" missing - FAIL');
+        allFieldsPresent = false;
+      }
+    });
+
+    if (allFieldsPresent) {
+      console.log('\n✓ TEST 1 PASSED: All checks successful');
+    } else {
+      console.log('\n✗ TEST 1 FAILED: Some fields are missing');
+    }
+
+    console.log('\nSample data from first post:');
+    console.log('- userId: ' + firstPost.userId);
+    console.log('- id: ' + firstPost.id);
+    console.log('- title: ' + firstPost.title);
+    console.log('- body: ' + firstPost.body);
+
+})
+.catch(error => {
+console.log('\n✗ TEST 1 FAILED with error: ' + error.message);
+});
+Solution 2: GET Request with Parameter - Retrieve Specific Post
+javascript// Test 2: Get a specific post by ID
+console.log('\n\n=== TEST 2: GET Specific Post by ID ===\n');
+const postId = 5;
+const specificPostUrl = 'https://jsonplaceholder.typicode.com/posts/' + postId;
+fetch(specificPostUrl)
+.then(response => {
+// Check status code
+console.log('Status Code: ' + response.status);
+
+    if (response.status === 200) {
+      console.log('✓ Status code is 200 - PASS');
+    } else {
+      console.log('✗ Status code is not 200 - FAIL');
+      throw new Error('Bad status code');
+    }
+
+    return response.json();
+
+})
+.then(data => {
+// Check if response is an object (not an array)
+console.log('\nResponse Type Check:');
+if (typeof data === 'object' && !Array.isArray(data)) {
+console.log('✓ Response is an object - PASS');
+} else {
+console.log('✗ Response is not an object - FAIL');
+throw new Error('Not an object');
+}
+
+    // Check if the returned ID matches what we requested
+    console.log('\nID Verification:');
+    if (data.id === postId) {
+      console.log('✓ Returned post ID (' + data.id + ') matches requested ID (' + postId + ') - PASS');
+    } else {
+      console.log('✗ Returned ID does not match - FAIL');
+      throw new Error('ID mismatch');
+    }
+
+    // Check for required fields
+    console.log('\nRequired Fields Check:');
+    const requiredFields = ['userId', 'id', 'title', 'body'];
+
+    let allFieldsPresent = true;
+    requiredFields.forEach(field => {
+      if (data.hasOwnProperty(field)) {
+        console.log('✓ Field "' + field + '" exists - PASS');
+      } else {
+        console.log('✗ Field "' + field + '" missing - FAIL');
+        allFieldsPresent = false;
+      }
+    });
+
+    // Check field types
+    console.log('\nField Type Validation:');
+    if (typeof data.userId === 'number') {
+      console.log('✓ userId is a number - PASS');
+    } else {
+      console.log('✗ userId is not a number - FAIL');
+      allFieldsPresent = false;
+    }
+
+    if (typeof data.id === 'number') {
+      console.log('✓ id is a number - PASS');
+    } else {
+      console.log('✗ id is not a number - FAIL');
+      allFieldsPresent = false;
+    }
+
+    if (typeof data.title === 'string') {
+      console.log('✓ title is a string - PASS');
+    } else {
+      console.log('✗ title is not a string - FAIL');
+      allFieldsPresent = false;
+    }
+
+    if (typeof data.body === 'string') {
+      console.log('✓ body is a string - PASS');
+    } else {
+      console.log('✗ body is not a string - FAIL');
+      allFieldsPresent = false;
+    }
+
+    if (allFieldsPresent) {
+      console.log('\n✓ TEST 2 PASSED: All checks successful');
+    } else {
+      console.log('\n✗ TEST 2 FAILED: Some checks failed');
+    }
+
+    console.log('\nRetrieved Post Data:');
+    console.log('- userId: ' + data.userId);
+    console.log('- id: ' + data.id);
+    console.log('- title: ' + data.title);
+    console.log('- body: ' + data.body);
+
+})
+.catch(error => {
+console.log('\n✗ TEST 2 FAILED with error: ' + error.message);
+});
+Solution 3: POST Request - Create a New Resource
+javascript// Test 3: Create a new post using POST
+console.log('\n\n=== TEST 3: POST Request - Create New Post ===\n');
+const newPost = {
+title: 'Test Post Title',
+body: 'This is a test post body',
+userId: 1
+};
+console.log('Creating new post with data:');
+console.log('- title: ' + newPost.title);
+console.log('- body: ' + newPost.body);
+console.log('- userId: ' + newPost.userId);
+fetch('https://jsonplaceholder.typicode.com/posts', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(newPost)
+})
+.then(response => {
+// Check status code for POST (should be 201 Created)
+console.log('\nStatus Code: ' + response.status);
+
+    if (response.status === 201) {
+      console.log('✓ Status code is 201 (Created) - PASS');
+    } else if (response.status === 200) {
+      console.log('✓ Status code is 200 (OK) - PASS');
+    } else {
+      console.log('✗ Status code is not 200 or 201 - FAIL');
+      throw new Error('Bad status code: ' + response.status);
+    }
+
+    return response.json();
+
+})
+.then(data => {
+// Check if response is an object
+console.log('\nResponse Type Check:');
+if (typeof data === 'object' && !Array.isArray(data)) {
+console.log('✓ Response is an object - PASS');
+} else {
+console.log('✗ Response is not an object - FAIL');
+throw new Error('Not an object');
+}
+
+    // Check if the post was created with an ID
+    console.log('\nID Assignment Check:');
+    if (data.hasOwnProperty('id') && data.id > 0) {
+      console.log('✓ New post has been assigned an ID: ' + data.id + ' - PASS');
+    } else {
+      console.log('✗ No ID assigned to new post - FAIL');
+      throw new Error('No ID');
+    }
+
+    // Check if the submitted data is in the response
+    console.log('\nSubmitted Data Verification:');
+
+    let dataMatches = true;
+
+    if (data.title === newPost.title) {
+      console.log('✓ Title matches: "' + data.title + '" - PASS');
+    } else {
+      console.log('✗ Title does not match - FAIL');
+      dataMatches = false;
+    }
+
+    if (data.body === newPost.body) {
+      console.log('✓ Body matches: "' + data.body + '" - PASS');
+    } else {
+      console.log('✗ Body does not match - FAIL');
+      dataMatches = false;
+    }
+
+    if (data.userId === newPost.userId) {
+      console.log('✓ UserId matches: ' + data.userId + ' - PASS');
+    } else {
+      console.log('✗ UserId does not match - FAIL');
+      dataMatches = false;
+    }
+
+    // Check required fields exist
+    console.log('\nRequired Fields Check:');
+    const requiredFields = ['id', 'title', 'body', 'userId'];
+
+    let allFieldsPresent = true;
+    requiredFields.forEach(field => {
+      if (data.hasOwnProperty(field)) {
+        console.log('✓ Field "' + field + '" exists - PASS');
+      } else {
+        console.log('✗ Field "' + field + '" missing - FAIL');
+        allFieldsPresent = false;
+      }
+    });
+
+    if (allFieldsPresent && dataMatches) {
+      console.log('\n✓ TEST 3 PASSED: Post created successfully');
+    } else {
+      console.log('\n✗ TEST 3 FAILED: Some checks failed');
+    }
+
+    console.log('\nCreated Post Response:');
+    console.log('- id: ' + data.id);
+    console.log('- title: ' + data.title);
+    console.log('- body: ' + data.body);
+    console.log('- userId: ' + data.userId);
+
+})
+.catch(error => {
+console.log('\n✗ TEST 3 FAILED with error: ' + error.message);
+});
+Summary of What Each Test Does:
+Test 1 (GET all posts):
+Sends request to get all posts
+Checks status is 200
+Verifies response is a list
+Confirms each post has userId, id, title, body fields
+Test 2 (GET specific post):
+Sends request to get post with ID 5
+Checks status is 200
+Verifies response is a single object (not a list)
+Confirms the ID matches what we requested
+Validates field types (numbers and strings)
+Test 3 (POST new post):
+Creates a new post with title, body, and userId
+Checks status is 201 (or 200)
+Verifies the API assigned an ID to the new post
+Confirms the data we sent matches what came back
+Validates all required fields are present
+How to Run:
+Just copy all three code blocks together and run them in Node.js or in a browser console. You'll see pass/fail results for each test.
